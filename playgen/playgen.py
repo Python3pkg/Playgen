@@ -9,15 +9,15 @@ class YoutubePlaylistTxt(object):
 		if not os.path.exists("YoutubePlaylistTxt"):
 			os.makedirs("YoutubePlaylistTxt")
 	def specification(self):
-		print '1.Auto MP4\n2.Auto 3GP\n3.720P\n4.360P\n5.240P\n6.144P'
-		self.quality = input("Quality: ")
+		print('1.Auto MP4\n2.Auto 3GP\n3.720P\n4.360P\n5.240P\n6.144P')
+		self.quality = eval(input("Quality: "))
 		if(self.quality > 6):
 			os.system('clear')
 			self.specification()
-		file_name = raw_input("File Name: ")
+		file_name = input("File Name: ")
 		if os.path.exists('YoutubePlaylistTxt/'+file_name+'.txt'):
 			file_name = file_name + '_new'
-			print 'Renamed to '+file_name
+			print('Renamed to '+file_name)
 		self.playlist_file = open('YoutubePlaylistTxt/'+file_name+'.txt','a')
 	def create_txt(self):
 		browser = webdriver.Chrome()
@@ -45,7 +45,7 @@ class YoutubePlaylistTxt(object):
 		link = pyperclip.paste()
 		self.playlist_file.write(link)
 		self.playlist_file.close()
-		print 'File Created Successfully'
+		print('File Created Successfully')
 		browser.quit()
 ypt = YoutubePlaylistTxt()
 ypt.specification()
